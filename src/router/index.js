@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MenuPage from '@/components/MenuPage.vue'
-import HeroSection from '@/components/HeroSection.vue'
+import Login from '@/components/Login.vue'
+import Register from '@/components/Register.vue'
+import ReservaTurno from '@/components/ReservaTurno.vue'
+
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,13 +30,35 @@ const router = createRouter({
       name: 'MenuPage',
       component: MenuPage,
     },
-   
 
     { 
-      path: '/HeroSection',
-      name: 'HeroSection',
-      component: HeroSection,
+      path: '/reservaTurno',
+      name: 'ReservaTurno',
+      component: ReservaTurno,
     },
+
+
+    { 
+      path: '/login',
+      name: 'Login',
+      component: Login,
+    },
+
+    { 
+      path: '/register',
+      name: 'Register',
+      component: Register,
+    },
+
+   
+    // { 
+    //   path: '/carrito',
+    //   name: 'Carrito',
+    //   component: Carrito,
+    // },
+   
+
+   
    
 
     
@@ -41,5 +67,12 @@ const router = createRouter({
 
   ],
 })
+
+
+
+
+
+
+
 
 export default router
