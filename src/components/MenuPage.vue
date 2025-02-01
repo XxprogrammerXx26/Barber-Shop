@@ -24,20 +24,8 @@
             <li class="nav-item"><a class="nav-link" href="#servicios">Nuestros Servicios</a></li>
             <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
             <li class="nav-item"><a class="nav-link" href="#contactanos">Contactanos</a></li>
-<!-- 
-          <li class="nav-item">
-              <a class="nav-link icon-btn " href="/login">
-                <i class="bi bi-person"></i> 
-              </a>
-            </li>
-            <br> -->
-         
 
 
-           
-
-
-        
           <li class="nav-item" v-if="!user">
             <a class="nav-link" href="/login">
               <i class="bi bi-person"></i> Iniciar Sesión
@@ -45,19 +33,31 @@
           </li>
 
         
-          <li class="nav-item" v-if="user">
+          <!-- <li class="nav-item" v-if="user">
             <a class="nav-link" href="/profile">
               <i class="bi bi-person-circle"></i> {{ user.email }}
             </a>
-          </li>
+          </li> -->
+
+      
+
+
+
 
          
           <li class="nav-item" v-if="user">
-            <a class="nav-link" @click="handleSignOut">
-              <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+            <a class="nav-link " @click="handleSignOut">
+              
+              <i class="bi bi-person"></i>Cerrar Sesion
             </a>
           </li>
 
+
+          <li class="nav-item" v-if="user">
+          <a class="nav-link icon-btn" href="/Usuario">
+          <i class="bi bi-person"></i> {{ user.name || '' }}
+         </a>
+         </li>
           
           <li class="nav-item">
               <a class="nav-link  icon-btn " href="/carrito">
@@ -67,6 +67,7 @@
        
 
 
+          
 
 
 
@@ -161,10 +162,10 @@
   <div class="container">
     <h2 class="text-center mb-4">Nuestros Productos</h2>
     <div class="row">
-      <!-- Producto 1 -->
+     
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="" class="card-img-top" alt="Producto 1">
+          <img src="/src/assets/th.jpg" class="card-img-top" alt="Producto 1">
           <div class="card-body">
             <h5 class="card-title">Cera para Cabello</h5>
             <p class="card-text">Producto ideal para mantener tu estilo todo el día. Alta fijación y acabado natural.</p>
@@ -172,10 +173,10 @@
           </div>
         </div>
       </div>
-      <!-- Producto 2 -->
+  
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="" class="card-img-top" alt="Producto 2">
+          <img src="/src/assets/beard.jpg" class="card-img-top" alt="Producto 2">
           <div class="card-body">
             <h5 class="card-title">Aceite para Barba</h5>
             <p class="card-text">Aceite nutritivo para la barba, ideal para mantenerla suave, hidratada y saludable.</p>
@@ -183,10 +184,10 @@
           </div>
         </div>
       </div>
-      <!-- Producto 3 -->
+   
       <div class="col-md-4">
         <div class="card shadow-sm">
-          <img src="" class="card-img-top" alt="Producto 3">
+          <img src="/src/assets/voluminizing.jpg" class="card-img-top" alt="Producto 3">
           <div class="card-body">
             <h5 class="card-title">Champú Voluminizador</h5>
             <p class="card-text">Champú especialmente formulado para dar volumen y cuerpo al cabello fino.</p>
@@ -197,6 +198,22 @@
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -311,6 +328,12 @@ export default {
 };
 
 
+
+
+
+
+
+
 </script>
 
 
@@ -378,6 +401,8 @@ export default {
   opacity: 1;
   transition: opacity 0.3s ease;
 }
+
+
 
 /* Sección Sobre Nosotros */
 .about-us {
@@ -512,6 +537,8 @@ form button {
     height: 200px; 
     object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
   }
+
+
 
   /* Asegura que todas las tarjetas tengan la misma altura */
   .card {

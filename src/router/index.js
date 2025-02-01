@@ -3,8 +3,9 @@ import MenuPage from '@/components/MenuPage.vue'
 import Login from '@/components/Login.vue'
 import Register from '@/components/Register.vue'
 import ReservaTurno from '@/components/ReservaTurno.vue'
-
-
+import Usuario from '@/components/Usuario.vue'
+import Carrito from '@/components/Carrito.vue'
+import ListaReserva from '@/components/ListaReserva.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,12 @@ const router = createRouter({
       component: ReservaTurno,
     },
 
+    {
+      path: '/listareserva',
+      name: 'ListaReserva',
+      component: ListaReserva,
+    },
+
 
     { 
       path: '/login',
@@ -50,12 +57,19 @@ const router = createRouter({
       component: Register,
     },
 
+
+    { 
+      path: '/usuario',
+      name: 'Usuario',
+      component: Usuario,
+    },
+
    
-    // { 
-    //   path: '/carrito',
-    //   name: 'Carrito',
-    //   component: Carrito,
-    // },
+    { 
+      path: '/carrito',
+      name: 'Carrito',
+      component: Carrito,
+    },
    
 
    
