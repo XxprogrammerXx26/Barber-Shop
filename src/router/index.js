@@ -4,7 +4,7 @@ import Login from '@/components/Login.vue'
 import Register from '@/components/Register.vue'
 import ReservaTurno from '@/components/ReservaTurno.vue'
 import Usuario from '@/components/Usuario.vue'
-import Carrito from '@/components/Carrito.vue'
+
 import ListaReserva from '@/components/ListaReserva.vue'
 
 const router = createRouter({
@@ -65,11 +65,11 @@ const router = createRouter({
     },
 
    
-    { 
-      path: '/carrito',
-      name: 'Carrito',
-      component: Carrito,
-    },
+    // { 
+    //   path: '/carrito',
+    //   name: 'Carrito',
+    //   component: Carrito,
+    // },
    
 
    

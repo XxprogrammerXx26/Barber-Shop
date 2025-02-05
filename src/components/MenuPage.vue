@@ -22,7 +22,7 @@
             <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="#sobrenosotros">Sobre Nosotros</a></li>
             <li class="nav-item"><a class="nav-link" href="#servicios">Nuestros Servicios</a></li>
-            <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li> -->
             <li class="nav-item"><a class="nav-link" href="#contactanos">Contactanos</a></li>
 
 
@@ -32,18 +32,7 @@
             </a>
           </li>
 
-        
-          <!-- <li class="nav-item" v-if="user">
-            <a class="nav-link" href="/profile">
-              <i class="bi bi-person-circle"></i> {{ user.email }}
-            </a>
-          </li> -->
-
       
-
-
-
-
          
           <li class="nav-item" v-if="user">
             <a class="nav-link " @click="handleSignOut">
@@ -58,19 +47,8 @@
           <i class="bi bi-person"></i> {{ user.name || '' }}
          </a>
          </li>
-          
-          <li class="nav-item">
-              <a class="nav-link  icon-btn " href="/carrito">
-                <i class="bi bi-cart"></i> 
-              </a>
-            </li> 
-       
-
-
-          
-
-
-
+          <br>
+        
           </ul>
         </div>
       </div>
@@ -147,81 +125,6 @@
       </div>
     </section>
 
-    
-
-
-
-
-
-
-
-
-   
-       
-    <section class="products py-5" id="productos">
-  <div class="container">
-    <h2 class="text-center mb-4">Nuestros Productos</h2>
-    <div class="row">
-     
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="/src/assets/th.jpg" class="card-img-top" alt="Producto 1">
-          <div class="card-body">
-            <h5 class="card-title">Cera para Cabello</h5>
-            <p class="card-text">Producto ideal para mantener tu estilo todo el día. Alta fijación y acabado natural.</p>
-            <a href="/productos" class="btn btn-dark btn-lg">Ver Productos</a>
-          </div>
-        </div>
-      </div>
-  
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="/src/assets/beard.jpg" class="card-img-top" alt="Producto 2">
-          <div class="card-body">
-            <h5 class="card-title">Aceite para Barba</h5>
-            <p class="card-text">Aceite nutritivo para la barba, ideal para mantenerla suave, hidratada y saludable.</p>
-            <a href="/productos" class="btn btn-dark btn-lg">Ver Productos</a>
-          </div>
-        </div>
-      </div>
-   
-      <div class="col-md-4">
-        <div class="card shadow-sm">
-          <img src="/src/assets/voluminizing.jpg" class="card-img-top" alt="Producto 3">
-          <div class="card-body">
-            <h5 class="card-title">Champú Voluminizador</h5>
-            <p class="card-text">Champú especialmente formulado para dar volumen y cuerpo al cabello fino.</p>
-            <a href="/productos" class="btn btn-dark btn-lg">Ver Productos</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <section class="contact py-5" id="contactanos">
   <div class="container">
@@ -230,8 +133,8 @@
       <div class="col-md-6">
         <h4>Visítanos</h4>
         <p>Dirección: Calle Ficticia 123, Ciudad, País</p>
-        <p>Horario: Lunes a Viernes - 9:00 AM a 7:00 PM</p>
-        <p>Sábado - 9:00 AM a 3:00 PM</p>
+        <p>Horario: Lunes a Sabado - 9:00 AM a 7:00 PM</p>
+        <p>Domingo: Cerrado</p>
       </div>
       <div class="col-md-6">
         <h4>Envíanos un mensaje</h4>
@@ -275,9 +178,6 @@
 
 
 
-
-
-
 <footer class="bg-dark text-white text-center py-3">
       <p class="mb-0">&copy; 2025 BARBER. Todos los derechos reservados.</p>
     </footer>
@@ -298,10 +198,16 @@
 import { auth } from '../firebase'; // Importa la configuración de Firebase
 import { onAuthStateChanged, signOut } from 'firebase/auth'; // Importa métodos de Firebase
 
+
+
+
 export default {
   data() {
     return {
+
+    
       user: null, // Almacena los datos del usuario autenticado
+
     };
   },
   created() {
@@ -331,8 +237,10 @@ export default {
 
 
 
-
-
+  
+   
+    
+   
 
 </script>
 
