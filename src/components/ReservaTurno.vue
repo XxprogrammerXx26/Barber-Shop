@@ -79,42 +79,42 @@ export default {
       const currentDate = new Date(this.reservation.date);
       const dayOfWeek = currentDate.getDay(); 
 
-      // Bloquear solo el domingo (día 0) -> el Bloqueo comienza con el dia 6 contando desde cero
+    
       this.isWeekend = dayOfWeek === 6; 
     },
 
-    // Validación de la hora
+    
     validateTime() {
       const currentDate = new Date(this.reservation.date);
       const currentDay = currentDate.getDay(); 
       const reservationTime = new Date(`${this.reservation.date}T${this.reservation.time}`);
       const reservationHour = reservationTime.getHours();
 
-      // Bloquear solo el domingo (día 0)
+    
       if (currentDay === 0) {
         this.invalidTime = true; 
         return;
       }
 
-      // Validar que el horario de la reserva esté dentro de 9 AM a 7 PM, de lunes a sábado
+     
       const isValidTime = (currentDay >= 1 && currentDay <= 6 && reservationHour >= 9 && reservationHour < 19); 
 
       this.invalidTime = !isValidTime;
     },
 
-    // Enviar la reserva
+   
     async submitReservation() {
       const auth = getAuth();
       const user = auth.currentUser;
 
-      // Verificar que el usuario esté logueado
+    
       if (!user) {
         alert('Por favor, inicia sesión para realizar una reserva.');
         this.$router.push('/login');
         return;
       }
 
-      // Verificar que todos los campos estén completos
+     
       if (!this.reservation.name || !this.reservation.service || !this.reservation.date || !this.reservation.time) {
         alert('Por favor, completa todos los campos');
         return;
@@ -129,7 +129,7 @@ export default {
       const reservationTime = new Date(`${this.reservation.date}T${this.reservation.time}`);
       const reservationHour = reservationTime.getHours();
 
-      // Validar que la hora esté dentro del horario permitido (lunes a sábado de 9 AM a 7 PM)
+   
       const isValidTime = (currentDay >= 1 && currentDay <= 6 && reservationHour >= 9 && reservationHour < 19);
 
       if (!isValidTime) {
@@ -140,7 +140,7 @@ export default {
       try {
         console.log('Enviando reserva:', this.reservation);
 
-        // Guardar la reserva en Firestore
+        
         await addDoc(collection(db, 'reservations'), {
           ...this.reservation,
           userId: user.uid,
@@ -150,7 +150,7 @@ export default {
         alert('Reserva realizada con éxito');
         this.resetForm();
 
-        // Redirigir a la lista de reservas
+      
         this.$router.push('/ListaReserva');
       } catch (error) {
         console.error('Error al realizar la reserva:', error);
@@ -158,7 +158,6 @@ export default {
       }
     },
 
-    // Resetear el formulario
     resetForm() {
       this.reservation.name = '';
       this.reservation.service = '';

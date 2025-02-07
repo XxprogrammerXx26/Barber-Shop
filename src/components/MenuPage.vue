@@ -22,7 +22,6 @@
             <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
             <li class="nav-item"><a class="nav-link" href="#sobrenosotros">Sobre Nosotros</a></li>
             <li class="nav-item"><a class="nav-link" href="#servicios">Nuestros Servicios</a></li>
-            <!-- <li class="nav-item"><a class="nav-link" href="#productos">Productos</a></li> -->
             <li class="nav-item"><a class="nav-link" href="#contactanos">Contactanos</a></li>
 
 
@@ -138,25 +137,41 @@
       </div>
       <div class="col-md-6">
         <h4>Envíanos un mensaje</h4>
-        <form>
-          <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
+
+
+
+
+  <form @submit.prevent="sendEmail">
+  <div class="mb-3">
+    <label for="name" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="name" v-model="form.name" placeholder="Tu nombre" required>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Correo Electrónico</label>
+    <input type="email" class="form-control" id="email" v-model="form.email" placeholder="Tu correo" required>
+  </div>
+  <div class="mb-3">
+    <label for="subject" class="form-label">Asunto</label>
+    <input type="text" class="form-control" id="subject" v-model="form.subject" placeholder="Asunto" required>
+  </div>
+  <div class="mb-3">
+    <label for="message" class="form-label">Mensaje</label>
+    <textarea class="form-control" id="message" v-model="form.message" rows="4" placeholder="Tu mensaje" required></textarea>
+  </div>
+  
+  <button type="submit" class="btn btn-dark">Enviar Mensaje</button>
+</form>
+
+
+
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" id="email" placeholder="Tu correo" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Mensaje</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Tu mensaje" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-dark">Enviar Mensaje</button>
-        </form>
-      </div>
-    </div>
+        </div>
+      
+
+
+
+
     
-    <!-- Aquí se agrega el mapa -->
     <div class="row mt-4">
       <div class="col-12">
         <div class="map-container">
@@ -183,65 +198,111 @@
     </footer>
   </div>
 
-
 </template>
 
 
-
-
-
-
-
-
 <script >
-
-import { auth } from '../firebase'; // Importa la configuración de Firebase
-import { onAuthStateChanged, signOut } from 'firebase/auth'; // Importa métodos de Firebase
-
-
+import Swal from 'sweetalert2';
+import { auth } from '../firebase';
+import { onAuthStateChanged, signOut } from 'firebase/auth'; 
+import emailjs from 'emailjs-com';
 
 
 export default {
   data() {
     return {
-
-    
-      user: null, // Almacena los datos del usuario autenticado
-
+      user: null, 
+      form: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      }
     };
   },
   created() {
-    // Verifica el estado de autenticación cuando se monta el componente
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        this.user = user; // Si el usuario está autenticado, guarda los datos
+        this.user = user; 
       } else {
-        this.user = null; // Si no hay usuario autenticado, limpia el estado
+        this.user = null; 
       }
     });
   },
   methods: {
     async handleSignOut() {
       try {
-        await signOut(auth); // Cierra la sesión
-        this.user = null; // Limpia los datos del usuario
-        this.$router.push('/login'); // Redirige a la página de inicio de sesión
+        await signOut(auth); 
+        this.user = null; 
+        this.$router.push('/login'); 
       } catch (error) {
         console.error('Error al cerrar sesión:', error.message);
       }
+    },
+  
+
+  sendEmail() {
+  const service_id = 'service_xekb07f';
+  const template_id = 'template_hyvida4';
+  const user_id = 'MvDBmaPECYUuflKdn'; 
+
+//   emailjs.send(service_id, template_id, this.form, user_id)
+//     .then((response) => {
+//       console.log('SUCCESS!', response.status, response.text);
+//       alert('Mensaje enviado con éxito!');
+//       this.form.name = '';
+//       this.form.email = '';
+//       this.form.subject = '';
+//       this.form.message = '';
+//     })
+//     .catch((error) => {
+//       console.error('FAILED...', error);
+//       alert('Error al enviar el mensaje.');
+//     });
+// }
+
+//   }
+// };
+
+
+
+
+
+
+
+
+emailjs.send(service_id, template_id, this.form, user_id)
+        .then((response) => {
+          
+          Swal.fire({
+            icon: 'success',
+            title: 'Mensaje Enviado',
+            text: '¡Tu mensaje ha sido enviado con éxito!',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#28a745' // Puedes personalizar el color del botón
+          });
+          this.form.name = '';
+          this.form.email = '';
+          this.form.subject = '';
+          this.form.message = '';
+        })
+        .catch((error) => {
+      
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Hubo un problema al enviar el mensaje. Intenta nuevamente.',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: '#dc3545' 
+          });
+          console.error('FAILED...', error);
+        });
     }
   }
 };
 
 
-
-
-
-  
-   
     
-   
-
 </script>
 
 
@@ -312,7 +373,6 @@ export default {
 
 
 
-/* Sección Sobre Nosotros */
 .about-us {
   background-color: #f8f9fa;
 }
@@ -335,26 +395,6 @@ export default {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Estilos para los productos y el formulario */
 .products .card-body .btn {
   width: 48%;
   font-size: 0.9rem;
@@ -389,14 +429,6 @@ form button {
 
 
 
-
-
-
-
-
-
-
-/* Estilos adicionales para los productos */
 .products .card {
   border: none;
   transition: transform 0.3s ease-in-out;
@@ -432,36 +464,23 @@ form button {
 }
 
 
-
-
-
-
-
-
-
-
 .card-img-top {
     width: 100%;
     height: 200px; 
-    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    object-fit: cover; 
   }
 
 
 
-  /* Asegura que todas las tarjetas tengan la misma altura */
   .card {
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
-  /* Asegura que el contenido dentro de la tarjeta ocupe el espacio restante */
+ 
   .card-body {
     flex-grow: 1;
   }
-
-
-
-
 
 </style>

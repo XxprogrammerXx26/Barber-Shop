@@ -71,13 +71,13 @@
               <router-link to="/register" class="text-decoration-none">Regístrate aquí</router-link>
             </p>
 
-            <!-- Alerta de error -->
+       
             <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
               <i class="bi bi-x-circle"></i> <p><strong>Error:</strong> {{ errorMessage }}</p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
-            <!-- Alerta de éxito -->
+          
             <div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
               <i class="bi bi-check-circle"></i> <p><strong>Éxito:</strong> {{ successMessage }}</p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -99,7 +99,7 @@ export default {
       email: '',
       password: '',
       errorMessage: '',
-      successMessage: '', // Para mostrar el mensaje de éxito
+      successMessage: '', 
     };
   },
   methods: {
@@ -108,15 +108,14 @@ export default {
         const userCredential = await signInWithEmailAndPassword(auth, this.email, this.password);
         const user = userCredential.user;
 
-        this.successMessage = `¡Bienvenido ${user.email}!`; // Establecer el mensaje de éxito
-        this.errorMessage = ''; // Limpiar mensaje de error si la autenticación es exitosa
+        this.successMessage = `¡Bienvenido ${user.email}!`; 
+        this.errorMessage = ''; 
 
-        // Redirigir a la página del menú
         this.$router.push({ name: 'MenuPage' }); 
       } catch (error) {
         console.error(error.message);
-        this.errorMessage = 'Correo electrónico o contraseña incorrectos'; // Establecer el mensaje de error
-        this.successMessage = ''; // Limpiar mensaje de éxito si ocurre un error
+        this.errorMessage = 'Correo electrónico o contraseña incorrectos'; 
+        this.successMessage = ''; 
       }
     }
   }
@@ -165,10 +164,10 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-/* Estilos de la alerta */
+
 .alert {
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   display: flex;
   align-items: center;
   padding: 12px 20px;
@@ -196,15 +195,15 @@ export default {
 }
 
 .alert-success i, .alert-danger i {
-  margin-right: 10px; /* Espacio entre icono y texto */
+  margin-right: 10px;
   font-size: 1.5rem;
 }
 
 .alert p {
-  margin: 0; /* Eliminar el margen superior e inferior del texto */
+  margin: 0;
 }
 
-/* Animación de entrada de alerta */
+
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -216,7 +215,7 @@ export default {
   }
 }
 
-/* Estilos de la tarjeta */
+
 .card {
   border-radius: 8px;
   background-color: #f7f7f7;

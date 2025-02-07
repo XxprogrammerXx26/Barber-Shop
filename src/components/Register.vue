@@ -20,17 +20,9 @@
 
       <div class="collapse navbar-collapse text-center" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- <li class="nav-item">
-            <a class="nav-link icon-btn" id="login">
-              <i class="bi bi-person"></i>
-            </a>
-          </li> -->
+      
           <br>
-          <!-- <li class="nav-item">
-            <a class="nav-link icon-btn" href="#">
-              <i class="bi bi-cart"></i>
-            </a>
-          </li> -->
+      
         </ul>
       </div>
     </div>
@@ -90,13 +82,11 @@
               <router-link to="/login" class="text-decoration-none">Inicia sesión aquí</router-link>
             </p>
 
-            <!-- Alerta de error -->
             <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
               <i class="bi bi-x-circle"></i> <p><strong>Error:</strong> {{ errorMessage }}</p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
-            <!-- Alerta de éxito -->
             <div v-if="successMessage" class="alert alert-success alert-dismissible fade show" role="alert">
               <i class="bi bi-check-circle"></i> <p><strong>Éxito:</strong> {{ successMessage }}</p>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -123,25 +113,25 @@ export default {
   },
   methods: {
     async handleRegister() {
-      // Validación de contraseñas
+   
       if (this.password !== this.confirmPassword) {
         this.errorMessage = 'Las contraseñas no coinciden';
         return;
       }
 
-      // Verificar que todos los campos están llenos
+     
       if (!this.email || !this.password || !this.confirmPassword) {
         this.errorMessage = 'Por favor, complete todos los campos';
         return;
       }
 
       try {
-        // Intentar crear el usuario con email y contraseña
+   
         const userCredential = await createUserWithEmailAndPassword(auth, this.email, this.password);
         const user = userCredential.user;
         this.successMessage = '¡Registro exitoso! Ahora puedes iniciar sesión.';
         
-        // Redirigir a la página de inicio de sesión
+     
         this.$router.push({ name: 'Login' });
       } catch (error) {
         this.errorMessage = error.message;
@@ -193,10 +183,9 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-/* Estilos de la alerta */
 .alert {
-  border-radius: 12px; /* Bordes redondeados */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 12px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   display: flex;
   align-items: center;
   padding: 12px 20px;
@@ -224,15 +213,15 @@ export default {
 }
 
 .alert-success i, .alert-danger i {
-  margin-right: 10px; /* Espacio entre icono y texto */
+  margin-right: 10px; 
   font-size: 1.5rem;
 }
 
 .alert p {
-  margin: 0; /* Eliminar el margen superior e inferior del texto */
+  margin: 0; 
 }
 
-/* Animación de entrada de alerta */
+
 @keyframes slideIn {
   0% {
     opacity: 0;
@@ -244,7 +233,7 @@ export default {
   }
 }
 
-/* Estilos de la tarjeta */
+
 .card {
   border-radius: 8px;
   background-color: #f7f7f7;
