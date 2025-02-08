@@ -279,7 +279,7 @@ emailjs.send(service_id, template_id, this.form, user_id)
             title: 'Mensaje Enviado',
             text: '¡Tu mensaje ha sido enviado con éxito!',
             confirmButtonText: 'Aceptar',
-            confirmButtonColor: '#28a745' // Puedes personalizar el color del botón
+            confirmButtonColor: '#28a745' 
           });
           this.form.name = '';
           this.form.email = '';
