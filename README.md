@@ -12,7 +12,7 @@ Este es un proyecto para una barbería donde los clientes pueden realizar reserv
 
 - **Registro y autenticación de usuarios**: Los clientes pueden registrarse e iniciar sesión utilizando Firebase Auth.
 - **Reservas de citas**: Los usuarios pueden ver, crear y gestionar sus reservas para diferentes servicios en la barbería.
-- **Gestión de imágenes**: Los usuarios pueden cargar imágenes para sus reservas usando Firebase Storage.
+- **Gestión de Reservas**: Los usuarios pueden cargar sus datos  para sus reservas usando Firestore.
   
 ## Tecnologías
 
