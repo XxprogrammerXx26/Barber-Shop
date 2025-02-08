@@ -1,4 +1,3 @@
-# Client 
 
 Link App:
 https://barber-shop-3d373.web.app/
@@ -21,17 +20,7 @@ Este es un proyecto para una barbería donde los clientes pueden realizar reserv
 - **Firebase**:
   - **Firebase Authentication**: Para el registro e inicio de sesión de usuarios.
   - **Firebase Firestore**: Para almacenar los datos de las reservas.
-  - **Firebase Storage**: Para guardar las imágenes relacionadas con las reservas.
-
-
-
-
-
-
-
-
-
-
+  
 
 
 
